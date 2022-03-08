@@ -1,0 +1,40 @@
+Loader.addToManifest(Loader.manifest,{
+  // Voice
+  test7: "assets/sounds/coin_get.mp3",
+  
+  slide7v0: "assets/voice/slide7_0.mp3" // "assets/voice/slide7_0.mp3"
+});
+
+SLIDES.push({
+
+	id: "sandbox",
+	onstart: function(self){
+
+		// The tournament simulation
+		Tournament.resetGlobalVariables();
+		self.add({id:"tournament", type:"Tournament", x:-20, y:-20});
+
+		// Screw it, just ALL of the Sandbox UI
+		self.add({id:"sandbox", type:"SandboxUI"});
+    
+    Loader.sounds.slide7v0.play(); //slide7_0
+
+		// Label & Button for next...
+		self.add({
+			id:"label_next", type:"TextBox",
+			x:55, y:481, width:535, align:"right",
+			text_id: "sandbox_end"
+		});
+		self.add({
+			id:"button_next", type:"Button",
+			x:605, y:485, size:"long",
+			text_id:"sandbox_end_btn",
+			message: "slideshow/scratch"
+		});
+		
+	},
+	onend: function(self){
+		self.clear();
+	}
+
+});
